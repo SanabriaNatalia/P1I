@@ -1,8 +1,8 @@
 /*
 PROYECTO 1 FUNDAMENTOS DE INFRAESTRUCTURA TECNOLOGICA - 201820
 Natalia Sanabria Forero - 201532265
-Integrante 2 - Codigo integrante 2
-Integrante 3 - Codigo integrante 3
+Santiago Barbosa Nieto - Codigo integrante 2
+Cristina Isabel González Osorio - 201520019
 */
 
 #define _CRT_SECURE_NO_DEPRECATE
@@ -125,15 +125,31 @@ int main()
 
 // Función que se encarga de convertir el arhcivo ingresado a Octal y escribir las representaciones numéricas de cada uno de los bytes
 void convertirAOctal(Datos *datosBin, Datos *datosOct ) :
-{
-	int tamanio = &(*datosBin).tamanio;
-	char[tamanio] = separarOctales(*datosBin);
+{	
+		char octales[] = separarOctales(*datosBin);
 }
 
 // Función que separe los octales (grupos de 3 bits)
 // NOTA: Debe completar el último octal en caso de estar incompleto
 char[] separarOctales( Datos *datosBin ) :
 {
+	struct Datos bin = &(*datosBin).struct;
+
+	int tamanio = bin.tamanio;
+	if(tamanio%3==0)
+	{
+		char octales[tamanio];
+	}
+	else if( tamanio %3 == 1)
+	{
+		char octales[tamanio+2];
+	}
+	else
+	{
+		char octales[tamanio+1];
+	}
+		
+
 
 }
 
