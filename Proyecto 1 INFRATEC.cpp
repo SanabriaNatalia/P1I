@@ -1,7 +1,7 @@
 /*
 PROYECTO 1 FUNDAMENTOS DE INFRAESTRUCTURA TECNOLOGICA - 201820
 Natalia Sanabria Forero - 201532265
-Santiago Barbosa Nieto - Codigo integrante 2
+Santiago Barbosa Nieto - 201730869
 Cristina Isabel González Osorio - 201520019
 */
 
