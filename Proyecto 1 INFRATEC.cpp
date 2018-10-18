@@ -126,7 +126,8 @@ int main()
 // Función que se encarga de convertir el arhcivo ingresado a Octal y escribir las representaciones numéricas de cada uno de los bytes
 void convertirAOctal(Datos *datosBin, Datos *datosOct ) :
 {
-	
+	int tamanio = &(*datosBin).tamanio;
+	char[tamanio] = separarOctales(*datosBin);
 }
 
 // Función que separe los octales (grupos de 3 bits)
