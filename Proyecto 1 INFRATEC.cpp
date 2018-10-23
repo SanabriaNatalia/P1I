@@ -153,4 +153,26 @@ char[] separarOctales( Datos *datosBin ) :
 
 }
 
-// Función que lea los octales y los traduzca a un int
+void charToBin(char input, char *output)
+{
+int i, residuo;
+
+
+char digitsArray[3] = "01";
+
+/*And here is where the very straightforward 'magic' happens: */
+/* Going backwards through the array of eight characters, */
+/* starting at the most significant 'bit' i.e. the leftmost one . */
+
+
+for (i = DIGITS; i > 0; i--)
+{
+residuo = input % BASE;
+input = input / BASE;
+output[i - 1] = digitsArray[residuo];
+}
+
+output[digits] = '\0';
+
+
+}
