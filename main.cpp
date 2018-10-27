@@ -83,62 +83,62 @@ void writeFile(int n, Datos * archivoEnOctal, char *nombreArchivo)
     fclose(file);
 }
 
-
 // Esta funcion se encarga de convertir a octal cada uno de los bytes que se
 //encuentran en la estructura datosBin->informacion y asignar los nuevos valores a la estructura datosOct->informacion.
 // Deben desarrollar esta funcion en su totalidad.
 void convertirAOctal(Datos * datosBin, Datos * datosOct)
 {
-    //TODO: COMPLETAR EL DESARROLLO DE LA FUNCION.
-    int tamanio = (datosBin->tamanio)*8;
-    unsigned char *info = (datosBin->informacion);
-    
-    int tamBin;
-    
-    if (tamanio%3==0)
-    {
-        tamBin = tamanio;
-    }
-    else if( tamanio%3 == 1)
-    {
-        tamBin = tamanio+2;
-    }
-    else
-    {
-        tamBin = tamanio+1;
-    }
-    
-    int datos[tamBin];
-    
-    // Inicializa en 0 las casillas adicionales si las hay
-    for(int k = tamBin-1; k > tamanio-1; k++)
-    {
-        info[k] = 0;
-    }
-    
-    //Convierte los caracteres en un arreglo de ints de unos y ceros
-    for (int i = 0; i < tamanio/8; i++)
-    {
-        int binNumOfChar = (info[i]); //Valor numérico del char en la posición i
-        int res; // Residuo
-        
-        for(int j = 8; j > 0; j-- )
-        {
-            res = binNumOfChar%2;
-            
-            datos[i+(j-1)] = res;
-            
-            binNumOfChar=binNumOfChar/2;
-        }
-        
-    }
-    
-    int numOctal = 0;
-    for(int l = 0; l < tamBin; l=l+3)
-    {
-        int octal = datos[l]*4 + datos[l+1]*2 + datos[l+2];
-        datosOct[numOctal] = octal;
-    }
+	//TODO: COMPLETAR EL DESARROLLO DE LA FUNCION.
+	int tamanio = (datosBin->tamanio) * 8;
+	unsigned char *info = (datosBin->informacion);
+
+	int tamBin;
+	if (tamanio % 3 == 0)
+	{
+		tamBin = tamanio;
+	}
+	else if (tamanio % 3 == 1)
+	{
+		tamBin = tamanio + 2;
+	}
+	else
+	{
+		tamBin = tamanio + 1;
+	}
+	
+
+	int datos[600];
+
+	// Inicializa en 0 las casillas adicionales si las hay
+	for (int k = tamBin - 1; k > tamanio - 1; k++)
+	{
+		info[k] = 0;
+	}
+
+	//Convierte los caracteres en un arreglo de ints de unos y ceros
+	for (int i = 0; i < tamanio / 8; i++)
+	{
+		int binNumOfChar = (info[i]); //Valor numérico del char en la posición i
+		int res; // Residuo
+
+		for (int j = 8; j > 0; j--)
+		{
+			res = binNumOfChar % 2;
+
+			datos[i + (j - 1)] = res;
+
+			binNumOfChar = binNumOfChar / 2;
+		}
+
+	}
+
+	int numOctal = 0;
+	for (int l = 0; l < tamBin; l = l + 3)
+	{
+		int octal = datos[l] * 4 + datos[l + 1] * 2 + datos[l + 2];
+		datosOct->informacion[numOctal] = octal;
+		numOctal++;
+	}
 }
 
 //-- Funcion main de la aplicacion
