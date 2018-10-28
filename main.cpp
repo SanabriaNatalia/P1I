@@ -1,8 +1,8 @@
 /*
  PROYECTO 1 FUNDAMENTOS DE INFRAESTRUCTURA TECNOLOGICA - 201820
- Natalia Sanabria Forero - 201532265
- Santiago Barbosa Nieto - 201730869
- Cristina Isabel González Osorio - 201520019
+ Natalia Sanabria Forero - 201532265 - n.sanabria@uniandes.edu.co
+ Santiago Barbosa Nieto - 201730869 - s.barbosan@uniandes.edu.co
+ Cristina Isabel González Osorio - 201520019 - ci.gonzalez10@uniandes.edu.co
  */
 
 #include <iostream>
