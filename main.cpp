@@ -89,19 +89,23 @@ void writeFile(int n, Datos * archivoEnOctal, char *nombreArchivo)
 void convertirAOctal(Datos * datosBin, Datos * datosOct)
 {
 	//TODO: COMPLETAR EL DESARROLLO DE LA FUNCION.
+    // Declaración de variables
 	int tamanio = (datosBin->tamanio);
 	unsigned char *info = (datosBin->informacion);
     int byte[8];   
     int tamBin = (tamanio*8);
 
+    //Ajusta el tamaño del vector binario si no es módulo 3
     if(tamBin % 3 != 0)
     {
         tamBin += (3 - (tamBin % 3));
     }
 
+    //Declaración de variables
     int binaryVector[tamBin];
     int j = 0;
 
+    //Se traduce a binario byte a byte
     for(int k=0; k<=tamanio; k++)
     {
         int letter = info[k];
@@ -117,7 +121,8 @@ void convertirAOctal(Datos * datosBin, Datos * datosOct)
                 letter = letter/2; 
             }     
         }   
-                
+
+        //Se invierte la secuencia de bits obtenida        
         for(i=i-1 ;i>=0 ;i--)    
         {   
             binaryVector[j] = byte[i]; 
@@ -125,10 +130,11 @@ void convertirAOctal(Datos * datosBin, Datos * datosOct)
         } 
     }
 
+    //Se traduce cada grupo de 3 bits a octal
     int numOctal = 0;
 	for (int l = 0; l < tamBin; l = l + 3)
 	{
-		int octal = binaryVector[l] * 4 + binaryVector[l + 1] * 2 + binaryVector[l + 2] + 48;
+		int octal = binaryVector[l] * 4 + binaryVector[l + 1] * 2 + binaryVector[l + 2] + 48; //Se suma 48 para pasarlo a octal
 		datosOct->informacion[numOctal] = octal;
 		numOctal++;
 	}
