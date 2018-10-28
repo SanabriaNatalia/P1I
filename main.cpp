@@ -89,56 +89,51 @@ void writeFile(int n, Datos * archivoEnOctal, char *nombreArchivo)
 void convertirAOctal(Datos * datosBin, Datos * datosOct)
 {
 	//TODO: COMPLETAR EL DESARROLLO DE LA FUNCION.
-	int tamanio = (datosBin->tamanio) * 8;
+	int tamanio = (datosBin->tamanio);
 	unsigned char *info = (datosBin->informacion);
+    int byte[8];   
+    int tamBin = (tamanio*8);
 
-	int tamBin;
-	if (tamanio % 3 == 0)
-	{
-		tamBin = tamanio;
-	}
-	else if (tamanio % 3 == 1)
-	{
-		tamBin = tamanio + 2;
-	}
-	else
-	{
-		tamBin = tamanio + 1;
-	}
-	
+    if(tamBin % 3 != 0)
+    {
+        tamBin += (3 - (tamBin % 3));
+    }
 
-	int datos[600];
+    int binaryVector[tamBin];
+    int j = 0;
 
-	// Inicializa en 0 las casillas adicionales si las hay
-	for (int k = tamBin - 1; k > tamanio - 1; k++)
-	{
-		info[k] = 0;
-	}
+    for(int k=0; k<=tamanio; k++)
+    {
+        int letter = info[k];
+        int i;
+         for(i=0; i<8; i++)    
+        {    
+            if(letter<=0)
+            {
+                byte[i] = 0;
+            }
+            else{
+                byte[i]=letter%2;    
+                letter = letter/2; 
+            }     
+        }   
+                
+        for(i=i-1 ;i>=0 ;i--)    
+        {   
+            binaryVector[j] = byte[i]; 
+            j += 1; 
+        } 
+    }
 
-	//Convierte los caracteres en un arreglo de ints de unos y ceros
-	for (int i = 0; i < tamanio / 8; i++)
-	{
-		int binNumOfChar = (info[i]); //Valor numérico del char en la posición i
-		int res; // Residuo
-
-		for (int j = 8; j > 0; j--)
-		{
-			res = binNumOfChar % 2;
-
-			datos[i + (j - 1)] = res;
-
-			binNumOfChar = binNumOfChar / 2;
-		}
-
-	}
-
-	int numOctal = 0;
+    int numOctal = 0;
 	for (int l = 0; l < tamBin; l = l + 3)
 	{
-		int octal = datos[l] * 4 + datos[l + 1] * 2 + datos[l + 2];
+		int octal = binaryVector[l] * 4 + binaryVector[l + 1] * 2 + binaryVector[l + 2] + 48;
 		datosOct->informacion[numOctal] = octal;
 		numOctal++;
 	}
+    
+
 }
 
 //-- Funcion main de la aplicacion
